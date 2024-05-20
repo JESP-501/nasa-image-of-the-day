@@ -1,0 +1,125 @@
+:root {
+    --color-bg: lightblue;
+    --color-text-main: #000000;
+    --color-primary: #ffff00;
+    --wrapper-height: 87vh;
+    --image-max-width: 300px;
+    --image-margin: 3rem;
+    --font-family: "HK Grotesk";
+    --font-family-header: "HK Grotesk";
+  }
+  
+  /* Basic page style resets */
+  * {
+    box-sizing: border-box;
+  }
+  
+  [hidden] {
+    display: none !important;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    background-color: var(--color-bg);
+  }
+  
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  
+  /* Page structure */
+  .wrapper {
+    min-height: var(--wrapper-height);
+    display: grid;
+    place-items: center;
+    margin: 0 1rem;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .title {
+    color: #2800ff;
+    font-family: var(--font-family);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 100px;
+    line-height: 105%;
+    margin: 0;
+  }
+  
+  .instructions {
+    margin: 1rem auto 0;
+  }
+  
+  button,
+  input {
+    font-family: inherit;
+    font-size: 100%;
+    background: #ffffff;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    transition: 500ms;
+  }
+  
+  div img {
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+  
+  .row {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  .col-2 {
+    padding: 5px;
+  }
+  
+  [class*="col-"] {
+    margin-left: 4%;
+    flex: 0 0 92%;
+  }
+  
+  .col-2 {
+    padding: 5px;
+  }
+  
+  /* Tablet Landscape Screen Sizes */
+  @media only screen and (min-width: 480px) {
+    .col-2 {
+      flex: 0 0 44%;
+    }
+  }
+  
+  /* Desktop screen Sizes */
+  @media only screen and (min-width: 768px) {
+    .col-2 {
+      flex: 0 0 44%;
+    }
+  }
+  
