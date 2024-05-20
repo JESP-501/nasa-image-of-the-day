@@ -2,14 +2,33 @@ import React, { useState } from 'react';
 import './NasaImage.css';
 
 const NasaImage = () => {
+  const [date, setDate] = useState('');
   const [data, setData] = useState(null);
-  const apiKey = process.env.REACT_APP_API_KEY;
-
-  console.log('API Key:', apiKey);
 
   const handleDateChange = (e) => {
-    const dateStr = e.target.value;
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${dateStr}`)
+    setDate(e.target.value);
+  };
+
+  const handleFetchData = () => {
+    if (!date) {
+      alert('Please select a date first.');
+      return;
+    }
+
+    // Get today's date
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for comparison
+
+    // Parse selected date
+    const selectedDate = new Date(date);
+
+    // Compare selected date with today's date
+    if (selectedDate > today) {
+      alert('Too far into the future!');
+      return;
+    }
+
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=7lHKRGKsjkAwdl2I0PBEBsQtmIKTwgJhuZGHZaUa&date=${date}`)
       .then(response => response.json())
       .then(data => setData(data))
       .catch(error => console.error(error));
@@ -20,8 +39,11 @@ const NasaImage = () => {
       <h1>NASA Pic of the Day API</h1>
       <div className="row">
         <article className="col-2">
+          <br/>
           <label htmlFor="dateInput">Search a date: </label>
-          <input type="date" id="dateInput" onChange={handleDateChange} /><br /><br /><br />
+          <input type="date" id="dateInput" onChange={handleDateChange}/>
+          <button onClick={handleFetchData}>Search the API!</button>
+          <br/>
           {data && data.media_type === "image" && <img src={data.url} id="image" className="image" alt={data.title} />}
           {data && data.media_type === "video" && <iframe src={data.url} frameBorder="0" id="video" title={data.title}></iframe>}
         </article>

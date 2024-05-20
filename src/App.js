@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import NasaImage from './NasaImage.css';
+import NasaImage from './NasaImage';
 
 function App() {
   return (
