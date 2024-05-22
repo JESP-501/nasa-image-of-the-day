@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './NasaImage.css';
+const api_key = process.env.api_key;
 
 const NasaImage = () => {
   const [date, setDate] = useState('');
@@ -28,7 +29,8 @@ const NasaImage = () => {
       return;
     }
 
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=7lHKRGKsjkAwdl2I0PBEBsQtmIKTwgJhuZGHZaUa&date=${date}`)
+    // Json fetch data where api key comes into play
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${date}`)
       .then(response => response.json())
       .then(data => setData(data))
       .catch(error => console.error(error));
