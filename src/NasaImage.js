@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './NasaImage.css';
-const api_key = process.env.api_key;
+
 
 const NasaImage = () => {
   const [date, setDate] = useState('');
@@ -30,7 +30,7 @@ const NasaImage = () => {
     }
 
     // Json fetch data where api key comes into play
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${date}`)
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=7lHKRGKsjkAwdl2I0PBEBsQtmIKTwgJhuZGHZaUa&date=${date}`)
       .then(response => response.json())
       .then(data => setData(data))
       .catch(error => console.error(error));
@@ -38,13 +38,13 @@ const NasaImage = () => {
 
   return (
     <div id="center">
-      <h1>NASA Pic of the Day API</h1>
+      <h1>NASA API APOD</h1>
       <div className="row">
         <article className="col-2">
           <br/>
-          <label htmlFor="dateInput">Search a date: </label>
+          <label htmlFor="dateInput">Select a date: </label>
           <input type="date" id="dateInput" onChange={handleDateChange}/>
-          <button onClick={handleFetchData}>Search the API!</button>
+          <button onClick={handleFetchData}>Search for something neat!</button>
           <br/>
           {data && data.media_type === "image" && <img src={data.url} id="image" className="image" alt={data.title} />}
           {data && data.media_type === "video" && <iframe src={data.url} frameBorder="0" id="video" title={data.title}></iframe>}

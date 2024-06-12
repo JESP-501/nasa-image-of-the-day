@@ -69,8 +69,16 @@ input {
   box-sizing: border-box;
   border-radius: 4px;
   padding: 0.5rem 1rem;
-  transition: 500ms;
+  transition: 0.4s;
+  transition-duration: 0.4s;
+
 }
+
+.button:hover {
+  background-color: black;
+  color: white;
+}
+
 
 div img {
   width: 100%;

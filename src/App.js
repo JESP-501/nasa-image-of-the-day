@@ -5,7 +5,7 @@ import NasaImage from './NasaImage';
 function App() {
   return (
     <div className="App">
-      <NasaImage />
+      <NasaImage/>
     </div>
   );
 }
